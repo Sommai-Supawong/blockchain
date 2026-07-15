@@ -211,5 +211,40 @@
   },
   "@openzeppelin/contracts@5.6.1/interfaces/IERC721.sol": {
     "../token/ERC721/IERC721.sol": ".deps/npm/@openzeppelin/contracts@5.6.1/token/ERC721/IERC721.sol"
+  },
+  "contracts/SolidityTest.sol": {
+    "__sources__": {}
+  },
+  "contracts/FindMinMax.sol": {
+    "__sources__": {
+      "contracts/FindMinMax.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.26;\r\n\r\ncontract FindMinMaxValue {\r\n    // uint\r\n    uint8 public minValue_uint8 = type(uint8).min;\r\n    uint8 public maxValue_uint8 = type(uint8).max;\r\n\r\n    uint16 public minValue_uint16 = type(uint16).min;\r\n    uint16 public maxValue_uint16 = type(uint16).max;\r\n\r\n    uint32 public minValue_uint32 = type(uint32).min;\r\n    uint32 public maxValue_uint32 = type(uint32).max;\r\n\r\n    uint256 public minValue_uint256 = type(uint256).min;\r\n    uint256 public maxValue_uint256 = type(uint256).max;\r\n\r\n    // int\r\n    int8 public minValue_int8 = type(int8).min;\r\n    int8 public maxValue_int8 = type(int8).max;\r\n\r\n    int16 public minValue_int16 = type(int16).min;\r\n    int16 public maxValue_int16 = type(int16).max;\r\n\r\n    int32 public minValue_int32 = type(int32).min;\r\n    int32 public maxValue_int32 = type(int32).max;\r\n\r\n    int256 public minValue_int256 = type(int256).min;\r\n    int256 public maxValue_int256 = type(int256).max;\r\n}",
+        "file": "contracts/FindMinMax.sol"
+      }
+    }
+  },
+  "contracts/MathOperation.sol": {
+    "__sources__": {
+      "contracts/MathOperation.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.26;\r\ncontract MathOperation {\r\n    uint8 public  balance ;\r\n\r\n    constructor(){\r\n    }\r\n\r\n    function decrease() public {\r\n        balance--;\r\n    }\r\n    \r\n    function increase () public {\r\n        balance++;    \r\n    }\r\n}",
+        "file": "contracts/MathOperation.sol"
+      }
+    }
+  },
+  "contracts/Helloworld.sol": {
+    "__sources__": {
+      "contracts/Helloworld.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.26;\r\ncontract HelloWorld {\r\n    string public message ;\r\n\r\n    constructor(string memory initialMessage){\r\n       message = initialMessage;\r\n    }\r\n\r\n    function getMassage() public view  returns  (string memory){\r\n        return  message;\r\n    }\r\n    function setMessage(string memory newMessage) public {\r\n        message = newMessage;\r\n    }\r\n} ",
+        "file": "contracts/Helloworld.sol"
+      }
+    }
+  },
+  "contracts/EasyBank.sol": {
+    "__sources__": {
+      "contracts/EasyBank.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.0;\r\n\r\ncontract EasyBank {\r\n    mapping (address => uint) balances;\r\n\r\n// เรียกดูเงิน\r\n    function getBalance() public view returns (uint256) {\r\n        return balances[msg.sender];\r\n    }\r\n// ฝาก\r\n    function deposit() public payable {\r\n        balances[msg.sender] += msg.value;\r\n    }\r\n// ถอน\r\n    function withdraw(uint256 _amount) public {\r\n        require(balances[msg.sender] >= _amount, \"Insufficient balance\");   \r\n        balances[msg.sender] -= _amount;\r\n\r\n        (bool success, ) = msg.sender.call{value: _amount}(\"\");\r\n        require(success, \"Transfer failed\");\r\n    } \r\n\r\n}",
+        "file": "contracts/EasyBank.sol"
+      }
+    }
   }
 }
